@@ -18,13 +18,13 @@
         android:orientation="vertical">
 
     <!-- Media -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="194dp"
-        app:srcCompat="@drawable/girl"
-        android:scaleType="centerCrop"
-        android:contentDescription="content_description_media"
-        />
+        <ImageView
+            android:id="@+id/person_pic"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:contentDescription="content_description_media"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/girl" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,28 +32,30 @@
         android:padding="16dp">
 
     <!-- Title, secondary and supporting text -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Radha Rajput"
-        android:textAppearance="?attr/textAppearanceHeadline6"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="MBA"
-        android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="?android:attr/textColorSecondary"
-        />
         <TextView
+            android:id="@+id/person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Radha Rajput"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        <TextView
+            android:id="@+id/person_qualification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="MBA"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <TextView
+            android:id="@+id/person_profession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Teacher"
             android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="?android:attr/textColorSecondary"
-            />
+            android:textColor="?android:attr/textColorSecondary" />
 
     </LinearLayout>
         <!-- Buttons -->
@@ -68,12 +70,14 @@
                 android:layout_marginEnd="8dp"
                 android:text="Connect"
                 android:layout_weight="3"
+                android:textSize="18dp"
                 style="?attr/borderlessButtonStyle"
                 />
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Not Interested"
+                android:textSize="18dp"
                 android:layout_weight="3"
                 style="?attr/borderlessButtonStyle"
                 />
@@ -82,7 +86,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/whatsapp_share">
+                app:srcCompat="@drawable/share_icon">
 
             </com.google.android.material.imageview.ShapeableImageView>
 
