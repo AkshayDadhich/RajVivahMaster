@@ -10,17 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rajvivah.R;
-import com.example.rajvivah.model.CourseModel;
+import com.example.rajvivah.modal.Selfregistrationresponse;
 
 import java.util.ArrayList;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder> {
 
     private Context context;
-    private ArrayList<CourseModel> courseModelArrayList;
+    private ArrayList<Selfregistrationresponse.CourseModel> courseModelArrayList;
 
     // Constructor
-    public CourseAdapter(Context context, ArrayList<CourseModel> courseModelArrayList) {
+    public CourseAdapter(Context context, ArrayList<Selfregistrationresponse.CourseModel> courseModelArrayList) {
         this.context = context;
         this.courseModelArrayList = courseModelArrayList;
     }
@@ -36,7 +36,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.Viewholder
     @Override
     public void onBindViewHolder(@NonNull CourseAdapter.Viewholder holder, int position) {
         // to set data to textview and imageview of each card layout
-        CourseModel model = courseModelArrayList.get(position);
+        Selfregistrationresponse.CourseModel model = courseModelArrayList.get(position);
         holder.person_name.setText(model.getCourse_name());
         holder.person_profession.setText("" + model.getCourse_rating());
         holder.person_pic.setImageResource(model.getCourse_image());

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.rajvivah.adapter.CourseAdapter;
-import com.example.rajvivah.model.CourseModel;
+import com.example.rajvivah.modal.Selfregistrationresponse;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ public class Card_Recycler_View extends AppCompatActivity {
     private RecyclerView courseRV;
 
     // Arraylist for storing data
-    private ArrayList<CourseModel> courseModelArrayList;
+    private ArrayList<Selfregistrationresponse.CourseModel> courseModelArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +26,13 @@ public class Card_Recycler_View extends AppCompatActivity {
 
         // here we have created new array list and added data to it.
         courseModelArrayList = new ArrayList<>();
-        courseModelArrayList.add(new CourseModel("DSA in Java", 4, R.drawable.girl));
-        courseModelArrayList.add(new CourseModel("Java Course", 3, R.drawable.girl));
-        courseModelArrayList.add(new CourseModel("C++ COurse", 4, R.drawable.girl));
-        courseModelArrayList.add(new CourseModel("DSA in C++", 4, R.drawable.girl));
-        courseModelArrayList.add(new CourseModel("Kotlin for Android", 4, R.drawable.girl));
-        courseModelArrayList.add(new CourseModel("Java for Android", 4, R.drawable.girl));
-        courseModelArrayList.add(new CourseModel("HTML and CSS", 4, R.drawable.girl));
+        courseModelArrayList.add(new Selfregistrationresponse.CourseModel("DSA in Java", 4, R.drawable.girl));
+        courseModelArrayList.add(new Selfregistrationresponse.CourseModel("Java Course", 3, R.drawable.girl));
+        courseModelArrayList.add(new Selfregistrationresponse.CourseModel("C++ COurse", 4, R.drawable.girl));
+        courseModelArrayList.add(new Selfregistrationresponse.CourseModel("DSA in C++", 4, R.drawable.girl));
+        courseModelArrayList.add(new Selfregistrationresponse.CourseModel("Kotlin for Android", 4, R.drawable.girl));
+        courseModelArrayList.add(new Selfregistrationresponse.CourseModel("Java for Android", 4, R.drawable.girl));
+        courseModelArrayList.add(new Selfregistrationresponse.CourseModel("HTML and CSS", 4, R.drawable.girl));
 
         // we are initializing our adapter class and passing our arraylist to it.
         CourseAdapter courseAdapter = new CourseAdapter(this, courseModelArrayList);
