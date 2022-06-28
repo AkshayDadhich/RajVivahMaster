@@ -1,11 +1,13 @@
 package com.example.rajvivah;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -14,6 +16,8 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Calendar;
@@ -87,6 +91,29 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 timePickerDialog.show();
                 }
         });
+
+
+//        BottomNavigationView.OnNavigationItemSelectedListener {item ->
+//                when(item.my_profile) {
+//            R.id.my_chat -> {
+//                // Respond to navigation item 1 click
+//                true
+//            }
+//            R.id.item2 -> {
+//                // Respond to navigation item 2 click
+//                true
+//            }
+//        else -> false
+//        }
+//        }
+//        BottomAppBar bar = (BottomAppBar) findViewById(R.id.bottom_navigation);
+//
+//        bar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem menu) {
+//                return false;
+//            }
+//        });
 
     }
 

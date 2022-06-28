@@ -7,11 +7,13 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="20dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/profile_first_name"
@@ -23,10 +25,10 @@
             android:layout_marginBottom="4dp"
             android:hint="@string/pfirstName"
             android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundMode="outline"
             app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp">
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -43,10 +45,10 @@
             android:layout_marginBottom="4dp"
             android:hint="@string/plastName"
             android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusTopStart="8dp"
             app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusTopEnd="8dp">
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -63,16 +65,16 @@
             android:layout_marginBottom="4dp"
             android:hint="Gender"
             android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            app:endIconMode="dropdown_menu"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusTopStart="8dp"
             app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusTopEnd="8dp">
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:endIconMode="dropdown_menu">
 
             <AutoCompleteTextView
                 android:id="@+id/gender_dropdown"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -85,10 +87,10 @@
             android:layout_marginBottom="4dp"
             android:hint="Mobile Number"
             android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusTopStart="8dp"
             app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusTopEnd="8dp">
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -98,21 +100,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp">
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/profile_dob"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:layout_weight="4"
                 android:text="Enter Date of Birth"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_weight="4"/>
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/dob_button"
@@ -126,21 +128,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp">
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/profile_birthtime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:layout_weight="4"
                 android:text="Enter Time of Birth "
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_weight="4"/>
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/birthtime_button"
@@ -154,19 +156,61 @@
 
         <Button
             android:id="@+id/save_Button"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
-            android:theme="@style/Widget.MaterialComponents.Button"
-            android:text="Save"
             android:backgroundTint="@color/vivah"
+            android:text="Save"
             android:textColor="@color/white"
-            android:layout_gravity="center"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            />
+            android:theme="@style/Widget.MaterialComponents.Button" />
+
+
+
+
     </LinearLayout>
+
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--    <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--        android:id="@+id/bottom_app_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:backgroundTint="@color/vivah"-->
+<!--        app:fabAlignmentMode="end"-->
+<!--        app:fabCradleRoundedCornerRadius="0dp"-->
+<!--        app:navigationIcon="@drawable/icon_account"-->
+<!--        app:navigationContentDescription="Account"-->
+<!--        />-->
+
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/matches_icon"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            app:layout_anchor="@id/bottom_app_bar">-->
+<!--        </com.google.android.material.floatingactionbutton.FloatingActionButton>-->
+
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottome_appbar_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
