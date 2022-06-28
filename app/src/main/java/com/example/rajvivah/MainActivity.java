@@ -1,8 +1,6 @@
 package com.example.rajvivah;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -16,11 +14,8 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.example.rajvivah.adapter.CourseAdapter;
-import com.example.rajvivah.model.CourseModel;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
@@ -60,10 +55,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, GetFamilyInfo.class);
-//                startActivity(intent);
-                  Intent intent = new Intent(MainActivity.this, Card_Recycler_View.class);
-                  startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, Registrationself.class);
+                startActivity(intent);
             }
         });
 
@@ -116,4 +109,3 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 " Minute: " + myMinute);
     }
 }
-
