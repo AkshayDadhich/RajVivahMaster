@@ -1,60 +1,32 @@
 package com.example.rajvivah;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.text.Editable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.rajvivah.modal.Userresponse;
-import com.google.android.material.chip.Chip;
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.List;
-import java.util.UUID;
+import androidx.appcompat.app.AppCompatActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.rajvivah.modal.Selfregistrationrequest;
-import com.example.rajvivah.modal.Selfregistrationresponse;
+import com.example.rajvivah.modal.DataModal;
 import com.example.rajvivah.modal.Userrequest;
-import com.example.rajvivah.webapi.Apiclient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,111 +35,138 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import android.widget.AutoCompleteTextView;
-import android.widget.TextView;
-
-import com.google.android.material.textfield.TextInputLayout;
+import com.example.rajvivah.modal.Userresponse;
+import com.example.rajvivah.uservice.RetrofitAPI;
+import com.example.rajvivah.webapi.Apiclient;
 
 public class Registrationself extends AppCompatActivity {
-    List<Selfregistrationresponse> selfregistrationresponseList;
-    TextInputLayout txtregisteruser_id, txtname, txtregisteruser_mob, txtregister_uid;
-    public String registeruser_id, name, registeruser_mob, register_uid;
-    private TextInputLayout textInputLayout;
-    private AutoCompleteTextView gender_dropdown;
-    TextView dobTextView;
-    Button dobBtn;
-    TextView birthTime;
-    Button birthtime_button;
-    int day, month, year, hour, minute;
-    int myday, myMonth, myYear, myHour, myMinute;
-    private Button save;
+    private EditText reg, name, mob, uid;
+    List<Userresponse> myheroList;
+    private Button postDataBtn;
+    private TextView responseTV;
+    private ProgressBar loadingPB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrationself);
-        txtname=findViewById(R.id.name);
-        txtregisteruser_mob=findViewById(R.id.registeruser_mob);
-        registeruser_id = "11111111";
-        name= String.valueOf(txtname.getEditText().getText()).toString();
-        registeruser_mob= String.valueOf(txtregisteruser_mob.getEditText().getText()).toString();
-        register_uid = "99999";
-        //Save Button
-        save = (Button) findViewById(R.id.save_Button);
-        save.setOnClickListener(new View.OnClickListener() {
+        reg = findViewById(R.id.reg);
+        name = findViewById(R.id.name);
+        mob = findViewById(R.id.mob);
+        uid = findViewById(R.id.uid);
+        responseTV = findViewById(R.id.responseTV);
+        postDataBtn = findViewById(R.id.idBtnPost);
+        String url = "https://reqres.in/";
+
+        postDataBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              // saveUser(createRequest());
-                getUser();
-            }
-        });
-    }
-
-
-    public Userrequest createRequest() {
-        Userrequest userrequest = new Userrequest();
-        userrequest.setRegisteruser_id("11111111");
-        userrequest.setName(String.valueOf(txtname.getEditText().getText()));
-        userrequest.setRegisteruser_mob(String.valueOf(txtregisteruser_mob.getEditText().getText()).toString());
-        userrequest.setRegister_uid("99999");
-        return userrequest;
-    }
-
-    public void saveUser(Userrequest userrequest) {
-        Call<Userresponse> userresponseCall = Apiclient.getUserservice().saveUser(
-                registeruser_id.toString(),
-                String.valueOf(txtname.getEditText().getText()),
-                String.valueOf(txtregisteruser_mob.getEditText().getText()).toString(),
-                register_uid
-
-        );
-        userresponseCall.enqueue(new Callback<Userresponse>() {
-            @Override
-            public void onResponse(@NonNull Call<Userresponse> call, @NonNull Response<Userresponse> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(Registrationself.this, "Data added Sucessfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(Registrationself.this, "Request Failed", Toast.LENGTH_SHORT).show();
-
+                //saveUser();
+              //s  getUser(); //for get
+                // validating if the text field is empty or not.
+               if (reg.getText().toString().isEmpty() && uid.getText().toString().isEmpty()) {
+                    Toast.makeText(Registrationself.this, "Please enter both the values", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-            }
-            @Override
-            public void onFailure(Call<Userresponse> call, Throwable t) {
-                Toast.makeText(Registrationself.this, "Request Failed" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                // calling a method to post the data and passing our name and job.
+                postData(reg.getText().toString(),name.getText().toString(),mob.getText().toString() ,uid.getText().toString());
+
 
             }
+
         });
-
     }
 
-    public void getUser() {
 
-        Call<List<Selfregistrationresponse>> userList = Apiclient.getUserservice().getallUser();
-        userList.enqueue(new Callback<List<Selfregistrationresponse>>() {
+
+
+    private void postData(String registeruser_id ,String name,String register_uid,String registeruser_mo) {
+
+        // below line is for displaying our progress bar.
+//        loadingPB.setVisibility(View.VISIBLE);
+
+        // on below line we are creating a retrofit
+        // builder and passing our base url
+        Retrofit retrofit = new Retrofit.Builder()
+        //http://vsrajawat-001-site2.btempurl.com/api/Selffirstreg
+
+                .baseUrl("http://vsrajawat-001-site2.btempurl.com/api/")
+                // as we are sending data in json format so
+                // we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // at last we are building our retrofit builder.
+                .build();
+        // below line is to create an instance for our retrofit api class.
+        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
+
+        // passing data from our text fields to our modal class.
+        DataModal modal = new DataModal(registeruser_id ,name,register_uid,registeruser_mo);
+
+        // calling a method to create a post and passing our modal class.
+        Call<DataModal> call = retrofitAPI.createPost(modal);
+
+        // on below line we are executing our method.
+        call.enqueue(new Callback<DataModal>() {
             @Override
-            public void onResponse(Call<List<Selfregistrationresponse>> call, Response<List<Selfregistrationresponse>> response) {
-                selfregistrationresponseList = new ArrayList<>();
-                selfregistrationresponseList.addAll(response.body());
-                String[] oneHeroes = new String[selfregistrationresponseList.size()];
+            public void onResponse(Call<DataModal> call, Response<DataModal> response) {
+                // this method is called when we get response from our api.
+                Toast.makeText(Registrationself.this, "Data added to API", Toast.LENGTH_SHORT).show();
+
+                // below line is for hiding our progress bar.
+//                loadingPB.setVisibility(View.GONE);
+                // on below line we are setting empty text
+                // to our both edit text.
+
+                // we are getting response from our body
+                // and passing it to our modal class.
+                DataModal responseFromAPI = response.body();
+
+                // on below line we are getting our data from modal class and adding it to our string.
+                String responseString = "Response Code : " + response.code() + "\nName : " + responseFromAPI.getName();
+
+                // below line we are setting our
+                // string to our text view.
+                responseTV.setText(responseString);
+            }
+
+            @Override
+            public void onFailure(Call<DataModal> call, Throwable t) {
+                // setting text to our text view when
+                // we get error response from API.
+                responseTV.setText("Error found is : " + t.getMessage());
+            }
+        });
+    }
+
+
+
+ public void getUser() {
+
+        Call<List<Userresponse>> userList = Apiclient.getUserservice().getallUser();
+        userList.enqueue(new Callback<List<Userresponse>>() {
+            @Override
+            public void onResponse(Call<List<Userresponse>> call, Response<List<Userresponse>> response) {
+                myheroList = new ArrayList<>();
+                myheroList.addAll(response.body());
+                String[] oneHeroes = new String[myheroList.size()];
                 if (response.isSuccessful()) {
-                    for (int i = 0; i < selfregistrationresponseList.size(); i++) {
-                        oneHeroes[i] = (i+1) +"  " + selfregistrationresponseList.get(i).getRegisteruser_id() + selfregistrationresponseList.get(i).getName() ;
-
-                        Toast.makeText(Registrationself.this, "Data " +selfregistrationresponseList.get(i).getRegisteruser_id()+selfregistrationresponseList.get(i).getName().toString(), Toast.LENGTH_SHORT).show();
-
+                    for (int i = 0; i < myheroList.size(); i++) {
+                        oneHeroes[i] = (i+1) +"  " +myheroList.get(i).getRegister_uid() +myheroList.get(i).getName();
+                        Toast.makeText(Registrationself.this, "Data " +myheroList.get(i).getName().toString(), Toast.LENGTH_SHORT).show();
                     }
 
                     Log.e("sucesspppp", response.body().toString());
-                    // Toast.makeText(Registeroffence.this, "Data " +response.toString(), Toast.LENGTH_SHORT).show();
+
                 } else {
                     Toast.makeText(Registrationself.this, "Data not added", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
-            public void onFailure(Call<List<Selfregistrationresponse>> call, Throwable t) {
+            public void onFailure(Call<List<Userresponse>> call, Throwable t) {
             }
         });
     }
+
 
 
 }
