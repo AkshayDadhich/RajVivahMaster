@@ -35,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+/*
 
+        Intent intent = new Intent(this, Registrationself.class);
+        startActivity(intent);
+*/
 
         //Fragment Part start here
         bottomNavigationView = findViewById(R.id.bnView);
