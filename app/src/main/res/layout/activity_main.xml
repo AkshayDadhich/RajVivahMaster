@@ -8,6 +8,7 @@
 
     <FrameLayout
         android:id="@+id/container"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize">
@@ -20,9 +21,9 @@
         android:id="@+id/bnView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/navigation_items"/>
+        android:background="@color/white"
+        app:menu="@menu/navigation_items" />
 
 
 
