@@ -3,16 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/nav_icon_chat.xml" value="0.137" />
-        <entry key="app/src/main/res/layout/activity_card_recycler_view.xml" value="0.20925925925925926" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/dropdown.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_matches.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_profile_fragement.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/menu/bottom_appbar_menu.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/menu/navigation_items.xml" value="0.23020833333333332" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/drawable/backtextview.xml" value="0.1" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/drawable/bottom_bg.xml" value="0.125" />
       </map>
     </option>
   </component>
