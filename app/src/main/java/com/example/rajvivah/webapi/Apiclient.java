@@ -18,9 +18,10 @@ public class Apiclient {
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient=new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://vsrajawat-001-site2.btempurl.com/api/")
-               // .baseUrl("https://localhost:7053/api/")
+                .baseUrl("http://vsrajawat-001-site3.btempurl.com/api/")
+               // .baseUrl("http://127.0.0.1:7053/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
                 .build();
         return retrofit;
     }
@@ -28,4 +29,5 @@ public class Apiclient {
         Userservice userservice=getRetrofit().create(Userservice.class);
         return userservice;
     }
+
 }
