@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,23 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.example.rajvivah.modal.Userresponse;
+import com.example.rajvivah.webapi.Apiclient;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
-
+    List<Userresponse> profileList;
     private TextInputLayout textInputLayout;
     private AutoCompleteTextView gender_dropdown;
     TextView dobTextView;
@@ -36,69 +47,53 @@ public class ProfileFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        TextView txtviewname = (TextView) view.findViewById(R.id.name);
+        txtviewname.setText("Datas");
+
+        Call<List<Userresponse>> userList = Apiclient.getUserservice().getallUser();
+
+        userList.enqueue(new Callback<List<Userresponse>>() {
+            @Override
+            public void onResponse(Call<List<Userresponse>> call, Response<List<Userresponse>> response) {
+                profileList = new ArrayList<>();
+                profileList.addAll(response.body());
+                String[] oneHeroes = new String[profileList.size()];
+                if (response.isSuccessful()) {
+                    for (int i = 0; i < profileList.size(); i++) {
+                        oneHeroes[i] = (i+1) +"  " +profileList.get(i).getRegister_uid() +profileList.get(i).getName();
+                        txtviewname.setText(profileList.get(i).getName());
+                    }
+
+                    Log.e("sucesspppp", response.body().toString());
+
+                } else {
+
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Userresponse>> call, Throwable t) {
+            }
+        });
+           return view;
+    }
+
+
+
+   /* @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
-//        textInputLayout = view.findViewById(R.id.profile_gender);
-//        gender_dropdown = view.findViewById(R.id.gender_dropdown);
-//
-//        //Gender Dropdown
-//        String[] gender = new String[]{
-//                "Male",
-//                "Female"
-//        };
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-//                ProfileFragment.this,
-//                R.layout.dropdown,
-//                gender
-//        );
-//        gender_dropdown.setAdapter(adapter);
-
-
-        //Save Button
-//        save = (Button) view.findViewById(R.id.save_Button);
-//        save.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(ProfileFragment.this, Card_Recycler_View.class);
-//                startActivity(intent);
-//            }
-//        });
-
-//      Date Picker
-//        dobTextView = view.findViewById(R.id.profile_dob);
-//        dobBtn = view.findViewById(R.id.dob_button);
-//        dobBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Calendar calendar = Calendar.getInstance();
-//                year = calendar.get(Calendar.YEAR);
-//                month = calendar.get(Calendar.MONTH);
-//                day = calendar.get(Calendar.DAY_OF_MONTH);
-//                DatePickerDialog datePickerDialog = new DatePickerDialog(ProfileFragment.this, ProfileFragment.this, year, month, day);
-//                datePickerDialog.show();
-//            }
-//        });
-////      Time Picker
-//        birthTime = view.findViewById(R.id.profile_birthtime);
-//        birthtime_button = view.findViewById(R.id.birthtime_button);
-//        birthtime_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Calendar c = Calendar.getInstance();
-//                hour = c.get(Calendar.HOUR);
-//                minute = c.get(Calendar.MINUTE);
-//                TimePickerDialog timePickerDialog = new TimePickerDialog(ProfileFragment.this, ProfileFragment.this, hour, minute,true);
-//                timePickerDialog.show();
-//            }
-//        });
-
         return view;
     }
+    public void setText() {
+        TextView view = (TextView) getView().findViewById(R.id.name);
+        view.setText("Akshay");
+    }*/
+
 
 //    @Override
 //    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -117,5 +112,33 @@ public class ProfileFragment extends Fragment {
 //        birthTime.setText("Hour: " + myHour +
 //                " Minute: " + myMinute);
 //    }
+public void getUser() {
+    Call<List<Userresponse>> userList = Apiclient.getUserservice().getallUser();
+    userList.enqueue(new Callback<List<Userresponse>>() {
+        @Override
+        public void onResponse(Call<List<Userresponse>> call, Response<List<Userresponse>> response) {
+            profileList = new ArrayList<>();
+            profileList.addAll(response.body());
+            String[] oneHeroes = new String[profileList.size()];
+            if (response.isSuccessful()) {
+                for (int i = 0; i < profileList.size(); i++) {
+                    oneHeroes[i] = (i+1) +"  " +profileList.get(i).getRegister_uid() +profileList.get(i).getName();
+                    //Toast.makeText(ProfileFragment.this, "Data " +profileList.get(i).getName().toString(), Toast.LENGTH_SHORT).show();
+              //profileList.get(i).getName().toString()
+
+                }
+
+                Log.e("sucesspppp", response.body().toString());
+
+            } else {
+               // Toast.makeText(ProfileFragment.this, "Data not added", Toast.LENGTH_SHORT).show();
+            }
+        }
+        @Override
+        public void onFailure(Call<List<Userresponse>> call, Throwable t) {
+        }
+    });
+
+}
 
 }

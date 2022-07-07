@@ -5,6 +5,16 @@
       <map>
         <entry key="..\:/RajVivahMaster/app/src/main/res/drawable/backtextview.xml" value="0.1" />
         <entry key="..\:/RajVivahMaster/app/src/main/res/drawable/bottom_bg.xml" value="0.125" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/drawable/custom_rectangle.xml" value="0.129" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/layout-w936dp/the_items_layout.xml" value="0.1" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/layout/activity_load.xml" value="0.1140625" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/layout/activity_registrationself.xml" value="0.17552083333333332" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/layout/activity_test.xml" value="0.22" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/layout/the_items_layout.xml" value="0.1" />
+        <entry key="..\:/RajVivahMaster/app/src/main/res/layout/the_items_layoutppp.xml" value="0.1" />
       </map>
     </option>
   </component>

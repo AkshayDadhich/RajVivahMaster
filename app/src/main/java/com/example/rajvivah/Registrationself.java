@@ -1,6 +1,8 @@
 package com.example.rajvivah;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -45,6 +47,7 @@ public class Registrationself extends AppCompatActivity {
     private Button postDataBtn;
     private TextView responseTV;
     private ProgressBar loadingPB;
+    private static TextView textview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +59,12 @@ public class Registrationself extends AppCompatActivity {
         uid = findViewById(R.id.uid);
         responseTV = findViewById(R.id.responseTV);
         postDataBtn = findViewById(R.id.idBtnPost);
-        String url = "https://reqres.in/";
 
         postDataBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //saveUser();
-              //s  getUser(); //for get
+               getUser(); //for get
                 // validating if the text field is empty or not.
                if (reg.getText().toString().isEmpty() && uid.getText().toString().isEmpty()) {
                     Toast.makeText(Registrationself.this, "Please enter both the values", Toast.LENGTH_SHORT).show();
@@ -70,7 +72,6 @@ public class Registrationself extends AppCompatActivity {
                 }
                 // calling a method to post the data and passing our name and job.
                 postData(reg.getText().toString(),name.getText().toString(),mob.getText().toString() ,uid.getText().toString());
-
 
             }
 
@@ -141,7 +142,6 @@ public class Registrationself extends AppCompatActivity {
 
 
  public void getUser() {
-
         Call<List<Userresponse>> userList = Apiclient.getUserservice().getallUser();
         userList.enqueue(new Callback<List<Userresponse>>() {
             @Override
@@ -152,6 +152,7 @@ public class Registrationself extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     for (int i = 0; i < myheroList.size(); i++) {
                         oneHeroes[i] = (i+1) +"  " +myheroList.get(i).getRegister_uid() +myheroList.get(i).getName();
+                        responseTV.setText(myheroList.get(i).getName());
                         Toast.makeText(Registrationself.this, "Data " +myheroList.get(i).getName().toString(), Toast.LENGTH_SHORT).show();
                     }
 
