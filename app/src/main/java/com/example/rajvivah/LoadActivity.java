@@ -20,7 +20,7 @@ public class LoadActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                Intent mainIntent = new Intent(LoadActivity.this, MainActivity.class);
+                Intent mainIntent = new Intent(LoadActivity.this, TestActivity.class);
                 startActivity(mainIntent);
                 finish();
             }
