@@ -35,14 +35,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        bottomNavigationView.setBackgroundColor();
+//        bottomNavigationView.getMenu().getItem(2).isEnabled() = false;
 /*
 
         Intent intent = new Intent(this, Registrationself.class);
         startActivity(intent);
 */
-
+        getSupportActionBar().hide();
         //Fragment Part start here
-        bottomNavigationView = findViewById(R.id.bnView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

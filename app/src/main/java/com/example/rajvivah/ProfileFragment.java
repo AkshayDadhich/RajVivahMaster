@@ -2,7 +2,9 @@ package com.example.rajvivah;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -36,6 +39,7 @@ public class ProfileFragment extends Fragment {
     List<Userresponse> profileList;
     private TextInputLayout textInputLayout;
     private AutoCompleteTextView gender_dropdown;
+
     TextView dobTextView;
     Button dobBtn;
     TextView birthTime;
@@ -50,9 +54,10 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        TextView txtviewname = (TextView) view.findViewById(R.id.name);
-        txtviewname.setText("Datas");
-
+        // TextView txtviewname = (TextView) view.findViewById(R.id.name);
+        // txtviewname.setText("Datas");
+        ImageView addBiodata = view.findViewById(R.id.btnAddBiodata);
+        ImageView btnLogOut = view.findViewById(R.id.btnLogOut);
         Call<List<Userresponse>> userList = Apiclient.getUserservice().getallUser();
 
         userList.enqueue(new Callback<List<Userresponse>>() {
@@ -64,7 +69,7 @@ public class ProfileFragment extends Fragment {
                 if (response.isSuccessful()) {
                     for (int i = 0; i < profileList.size(); i++) {
                         oneHeroes[i] = (i+1) +"  " +profileList.get(i).getRegister_uid() +profileList.get(i).getName();
-                        txtviewname.setText(profileList.get(i).getName());
+                        //   txtviewname.setText(profileList.get(i).getName());
                     }
 
                     Log.e("sucesspppp", response.body().toString());
@@ -77,7 +82,31 @@ public class ProfileFragment extends Fragment {
             public void onFailure(Call<List<Userresponse>> call, Throwable t) {
             }
         });
-           return view;
+
+        // Button for add/update biodata
+        addBiodata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Registrationself.class);
+                startActivity(intent);
+            }
+        });
+
+        //Button for logut from profile screen
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences preferences = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+
+                editor.putBoolean("flag", false);
+                editor.apply();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 
 
@@ -112,33 +141,33 @@ public class ProfileFragment extends Fragment {
 //        birthTime.setText("Hour: " + myHour +
 //                " Minute: " + myMinute);
 //    }
-public void getUser() {
-    Call<List<Userresponse>> userList = Apiclient.getUserservice().getallUser();
-    userList.enqueue(new Callback<List<Userresponse>>() {
-        @Override
-        public void onResponse(Call<List<Userresponse>> call, Response<List<Userresponse>> response) {
-            profileList = new ArrayList<>();
-            profileList.addAll(response.body());
-            String[] oneHeroes = new String[profileList.size()];
-            if (response.isSuccessful()) {
-                for (int i = 0; i < profileList.size(); i++) {
-                    oneHeroes[i] = (i+1) +"  " +profileList.get(i).getRegister_uid() +profileList.get(i).getName();
-                    //Toast.makeText(ProfileFragment.this, "Data " +profileList.get(i).getName().toString(), Toast.LENGTH_SHORT).show();
-              //profileList.get(i).getName().toString()
-
-                }
-
-                Log.e("sucesspppp", response.body().toString());
-
-            } else {
-               // Toast.makeText(ProfileFragment.this, "Data not added", Toast.LENGTH_SHORT).show();
-            }
-        }
-        @Override
-        public void onFailure(Call<List<Userresponse>> call, Throwable t) {
-        }
-    });
-
-}
+//public void getUser() {
+//    Call<List<Userresponse>> userList = Apiclient.getUserservice().getallUser();
+//    userList.enqueue(new Callback<List<Userresponse>>() {
+//        @Override
+//        public void onResponse(Call<List<Userresponse>> call, Response<List<Userresponse>> response) {
+//            profileList = new ArrayList<>();
+//            profileList.addAll(response.body());
+//            String[] oneHeroes = new String[profileList.size()];
+//            if (response.isSuccessful()) {
+//                for (int i = 0; i < profileList.size(); i++) {
+//                    oneHeroes[i] = (i+1) +"  " +profileList.get(i).getRegister_uid() +profileList.get(i).getName();
+//                    //Toast.makeText(ProfileFragment.this, "Data " +profileList.get(i).getName().toString(), Toast.LENGTH_SHORT).show();
+//              //profileList.get(i).getName().toString()
+//
+//                }
+//
+//                Log.e("sucesspppp", response.body().toString());
+//
+//            } else {
+//               // Toast.makeText(ProfileFragment.this, "Data not added", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//        @Override
+//        public void onFailure(Call<List<Userresponse>> call, Throwable t) {
+//        }
+//    });
+//
+//}
 
 }

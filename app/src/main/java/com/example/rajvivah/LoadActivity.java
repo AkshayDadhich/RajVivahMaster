@@ -3,6 +3,7 @@ package com.example.rajvivah;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -20,7 +21,18 @@ public class LoadActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                Intent mainIntent = new Intent(LoadActivity.this, TestActivity.class);
+                Intent mainIntent;
+                SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
+                Boolean check = preferences.getBoolean("flag", false);
+
+                if(check){
+                    mainIntent = new Intent(LoadActivity.this, MainActivity.class);
+                }else
+                {
+                    mainIntent = new Intent(LoadActivity.this, LoginActivity.class);
+                }
+
+
                 startActivity(mainIntent);
                 finish();
             }
