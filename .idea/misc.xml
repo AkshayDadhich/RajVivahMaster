@@ -3,8 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/RajVivahMaster/app/src/main/res/drawable/backtextview.xml" value="0.1" />
-        <entry key="..\:/RajVivahMaster/app/src/main/res/drawable/bottom_bg.xml" value="0.125" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/RajVivahMaster/app/src/main/res/drawable/custom_rectangle.xml" value="0.195" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/RajVivahMaster/app/src/main/res/drawable/icon_account.xml" value="0.205" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/RajVivahMaster/app/src/main/res/drawable/icons_facebook.xml" value="0.195" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/RajVivahMaster/app/src/main/res/layout/activity_display_card_view.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/RajVivahMaster/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/RajVivahMaster/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/RajVivahMaster/app/src/main/res/layout/fragment_profile.xml" value="0.176" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/RajVivahMaster/app/src/main/res/menu/bottome_appbar_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/RajVivahMaster/app/src/main/res/menu/navigation_items.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/activity_card_recycler_view.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/activity_display_card_view.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/activity_homeactivity.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/activity_registrationself.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/card_layout.xml" value="0.22916666666666666" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.23020833333333332" />
       </map>
     </option>
   </component>
