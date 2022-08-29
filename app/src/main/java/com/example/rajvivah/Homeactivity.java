@@ -87,7 +87,6 @@ public class Homeactivity extends AppCompatActivity implements DatePickerDialog.
                 timePickerDialog.show();
             }
         });
-
     }
 
     @Override

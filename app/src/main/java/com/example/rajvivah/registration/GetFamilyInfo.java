@@ -1,4 +1,4 @@
-package com.example.rajvivah;
+package com.example.rajvivah.registration;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+
+import com.example.rajvivah.R;
 
 public class GetFamilyInfo extends AppCompatActivity {
 

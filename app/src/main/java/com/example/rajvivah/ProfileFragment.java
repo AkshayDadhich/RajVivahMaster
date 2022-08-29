@@ -36,9 +36,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
-    List<Userresponse> profileList;
-    private TextInputLayout textInputLayout;
-    private AutoCompleteTextView gender_dropdown;
+//    List<Userresponse> profileList;
+//    private TextInputLayout textInputLayout;
+//    private AutoCompleteTextView gender_dropdown;
 
     TextView dobTextView;
     Button dobBtn;
@@ -58,30 +58,30 @@ public class ProfileFragment extends Fragment {
         // txtviewname.setText("Datas");
         ImageView addBiodata = view.findViewById(R.id.btnAddBiodata);
         ImageView btnLogOut = view.findViewById(R.id.btnLogOut);
-        Call<List<Userresponse>> userList = Apiclient.getUserservice().getallUser();
-
-        userList.enqueue(new Callback<List<Userresponse>>() {
-            @Override
-            public void onResponse(Call<List<Userresponse>> call, Response<List<Userresponse>> response) {
-                profileList = new ArrayList<>();
-                profileList.addAll(response.body());
-                String[] oneHeroes = new String[profileList.size()];
-                if (response.isSuccessful()) {
-                    for (int i = 0; i < profileList.size(); i++) {
-                        oneHeroes[i] = (i+1) +"  " +profileList.get(i).getRegister_uid() +profileList.get(i).getName();
-                        //   txtviewname.setText(profileList.get(i).getName());
-                    }
-
-                    Log.e("sucesspppp", response.body().toString());
-
-                } else {
-
-                }
-            }
-            @Override
-            public void onFailure(Call<List<Userresponse>> call, Throwable t) {
-            }
-        });
+//        Call<List<Userresponse>> userList = Apiclient.getUserservice().getallUser();
+//
+//        userList.enqueue(new Callback<List<Userresponse>>() {
+//            @Override
+//            public void onResponse(Call<List<Userresponse>> call, Response<List<Userresponse>> response) {
+//                profileList = new ArrayList<>();
+//                profileList.addAll(response.body());
+//                String[] oneHeroes = new String[profileList.size()];
+//                if (response.isSuccessful()) {
+//                    for (int i = 0; i < profileList.size(); i++) {
+//                        oneHeroes[i] = (i+1) +"  " +profileList.get(i).getRegister_uid() +profileList.get(i).getName();
+//                        //   txtviewname.setText(profileList.get(i).getName());
+//                    }
+//
+//                    Log.e("sucesspppp", response.body().toString());
+//
+//                } else {
+//
+//                }
+//            }
+//            @Override
+//            public void onFailure(Call<List<Userresponse>> call, Throwable t) {
+//            }
+//        });
 
         // Button for add/update biodata
         addBiodata.setOnClickListener(new View.OnClickListener() {

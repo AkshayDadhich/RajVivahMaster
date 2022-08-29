@@ -47,10 +47,10 @@
             android:name=".DisplayCardView"
             android:exported="false" />
         <activity
-            android:name=".GetEducationInfo"
+            android:name=".registration.GetEducationInfo"
             android:exported="false" />
         <activity
-            android:name=".GetFamilyInfo"
+            android:name=".registration.GetFamilyInfo"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
