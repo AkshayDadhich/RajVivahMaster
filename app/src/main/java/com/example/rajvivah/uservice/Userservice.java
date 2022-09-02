@@ -17,6 +17,6 @@ public interface Userservice {
     Call<Userresponse> saveUser(@Body Userrequest userrequest);
 
     //http://vsrajawat-001-site2.btempurl.com/api/Sel?registeruser_id=4
-    @GET("Sel?registeruser_id=4")
+    @GET("Sel?registeruser_id=10")
     Call<List<Userresponse>> getallUser();
 }
