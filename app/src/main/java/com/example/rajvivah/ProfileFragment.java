@@ -43,7 +43,8 @@ public class ProfileFragment extends Fragment {
     TextView dobTextView;
     Button dobBtn;
     TextView birthTime;
-    Button birthtime_button;
+    Button birthtime_button, btn_edit_profile;
+
     int day, month, year, hour, minute;
     int myday, myMonth, myYear, myHour, myMinute;
     private Button save;
@@ -58,6 +59,7 @@ public class ProfileFragment extends Fragment {
         // txtviewname.setText("Datas");
         ImageView addBiodata = view.findViewById(R.id.btnAddBiodata);
         ImageView btnLogOut = view.findViewById(R.id.btnLogOut);
+        Button btn_edit_profile = view.findViewById(R.id.btn_edit_profile);
 //        Call<List<Userresponse>> userList = Apiclient.getUserservice().getallUser();
 //
 //        userList.enqueue(new Callback<List<Userresponse>>() {
@@ -91,6 +93,15 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        btn_edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ActivityEditProfile.class);
+                startActivity(intent);
+            }
+        });
+
 
         //Button for logut from profile screen
         btnLogOut.setOnClickListener(new View.OnClickListener() {
